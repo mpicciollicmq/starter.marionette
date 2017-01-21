@@ -28,6 +28,10 @@ $ gulp build
 ```
 It will compile the project and put the result under `dist` directory.
 
+## Things to be done
+
+- [ ] Add test framework
+
 ## Contribution
 Ready to submit a fix or a feature? Submit a pull request! And _please_:
 
