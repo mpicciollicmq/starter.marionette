@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/Rentlio/starter.marionette.git"
   },
   "license": "MIT",
   "description": "Marionette starter",
