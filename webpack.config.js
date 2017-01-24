@@ -1,59 +1,43 @@
 var webpack = require('webpack');
-
-module.exports = {
-    
-    entry: {
-        app: './app/scripts/app.js',
-        core: [
-            'jquery',
-            'lodash',
-            'backbone',
-            'backbone.marionette'
-        ]
+var entry = './src/app/main.js',
+output = {
+    path: __dirname,
+    filename: 'main.js'
+},
+uglifyJsPlugin = new webpack.optimize.UglifyJsPlugin({
+    compressor: {
+        screw_ie8: true,
+        warnings: false
     },
-    
     output: {
-        path: 'dist/scripts',
-        publicPath: '/scripts/',
-        filename: '[name].js',
-        chunkFilename: '[name]-[chunkhash].js'
-    },
-    
-    resolve: {
-        extensions: ['', '.js'],
-        
-        modulesDirectories: [
-            'app/scripts',
-            '.tmp/scripts',
-            'web_modules',
-            'node_modules',
-            'test'
-        ],
-        
-        alias: {
-            underscore: 'lodash',
-            handlebars: 'handlebars/dist/handlebars'
-        }
-    },
-    
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules|bower_components/,
-                loader: 'babel-loader'
-            }
+        comments: false
+    }
+});
+
+module.exports.development = {
+    debug : true,
+    devtool : 'eval',
+    entry: entry,
+    output: output,
+    module : {
+        loaders : [
+            { test: /\.js?$/, exclude: /node_modules/, loader: 'babel-loader' },
+            { test: /\.hbs$/, loader: 'handlebars-loader' }
+        ]
+    }
+};
+
+module.exports.production = {
+    debug: false,
+    entry: entry,
+    output: output,
+    module : {
+        loaders : [
+            { test: /\.js?$/, exclude: /node_modules/, loader: 'babel-loader' },
+            { test: /\.hbs$/, loader: 'handlebars-loader' }
         ]
     },
-    
     plugins: [
-        new webpack.NoErrorsPlugin(),
-        new webpack.optimize.CommonsChunkPlugin('core', 'core.js'),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        })
+        uglifyJsPlugin
     ]
-    
 };

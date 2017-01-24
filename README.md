@@ -1,46 +1,64 @@
-# Marionette Starter
+# Marionette/Backbone Starter
 
-## Components
-- Gulp
-- Webpack
-- jQuery
-- Backbone
-- Marionette
-- Lodash
-- Handlebars
-- Sass
-- Livereload
- 
-## Setup
+### Setup
 Clone the repository and install the dependencies.
-```
+```shell
 $ git clone https://github.com/rentlio/starter.marionette.git my-app
-$ cd my-app
+$ npm install -g gulp karma-cli
 $ npm install
-$ gulp serve
 ```
-Do not forget to install globally gulp if not installed yet.
 
-## Build
-If you want to build the project run.
+### Develop
+Builds the application and starts a webserver with livereload. By default the webserver starts at port 9000.
+
+```shell
+$ gulp
 ```
-$ gulp build
+
+By default, it builds in debug mode.
+
+- If you need to build in release mode, add `--type production` flag.
+- You can define a port with `--port 3333` flag.
+
+### Build
+Builds a minified version of the application in the dist folder.
+
+```shell
+$ gulp build --type production
 ```
-It will compile the project and put the result under `dist` directory.
 
-## Things to be done
+### Test
+Unit and integration tests are powered by [Karma](http://karma-runner.github.io/0.12/index.html), [Mocha](http://mochajs.org/) and [Chai](http://chaijs.com/):
 
-- [ ] Add test framework
+```shell
+$ npm test
+```
 
-## Contribution
+### Components
+- [Backbone.js](http://backbonejs.org/)
+- [Marionette.js](http://marionettejs.com/)
+- [Lodash](https://lodash.com/)
+- [Handlebars](http://handlebarsjs.com/)
+- [Sass](http://sass-lang.com/)
+- [Gulp](http://gulpjs.com/)
+- [Karma](http://karma-runner.github.io/0.12/index.html)
+- [Mocha](http://mochajs.org/)
+- [Chai](http://chaijs.com/)
+- [Webpack](http://webpack.github.io/)
+- [Babel](https://babeljs.io/)
+
+### Contribution
 Ready to submit a fix or a feature? Submit a pull request! And _please_:
 
-- Update documentation comments where applicable.
+- If code changes, run the tests and make sure everything still works.
+- Write new tests for new functionality.
 - Maintain the existing style.
 
-## Contact
+### Credits
+starter.marionette is inspired by [Ignacio Rivas'](https://github.com/sabarasaba) [Modern Backbone Starter-kit](https://github.com/sabarasaba/modern-backbone-starterkit)
 
+### Contact
 - [Juraj Hilje](https://github.com/jurajhilje), [@juraj_hilje](https://twitter.com/juraj_hilje)
 
-## Licence
+### Licence
 Licensed under the MIT license.
