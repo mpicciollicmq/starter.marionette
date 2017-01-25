@@ -68,12 +68,14 @@ gulp.task('lint', () => {
     .pipe($.jshint.reporter('default'));
 });
 
+gulp.task('test', $.shell.task('npm test'));
+
 gulp.task('clean', (cb) => {
     del([dist], cb);
 });
 
 gulp.task('default', ['build', 'serve', 'watch']);
 
-gulp.task('build', ['clean'], () => {
-    gulp.start(['lint', 'static', 'html','scripts','styles']);
+gulp.task('build', (cb) => {
+    $.runSequence('clean', 'lint', 'test', 'static', 'html', 'scripts', 'styles', cb);
 });
