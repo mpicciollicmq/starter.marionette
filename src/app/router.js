@@ -5,7 +5,7 @@ import PostsView from './posts/view'
 export default Mn.AppRouter.extend({
     
     routes: {
-        '': 'users',
+        ''     : 'users',
         'users': 'users',
         'posts': 'posts'
     },
