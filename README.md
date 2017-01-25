@@ -3,7 +3,7 @@
 ### Setup
 Clone the repository and install the dependencies.
 ```shell
-$ git clone https://github.com/rentlio/starter.marionette.git my-app
+$ git clone https://github.com/rentlio/starter.marionette.git my-app && cd $_
 $ npm install -g gulp karma-cli
 $ npm install
 ```
