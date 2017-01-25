@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var path = require('path');
 var del = require('del');
 var $ = require('gulp-load-plugins')({
-    pattern: '*',
+    pattern: ['*', '!jshint']
 });
 
 var environment = $.util.env.type || 'development';
@@ -12,6 +12,7 @@ var webpackConfig = require('./webpack.config.js')[environment];
 var port = $.util.env.port || 9000;
 var src = 'src/';
 var dist = 'dist/';
+var tests = 'tests/';
 
 gulp.task('scripts', () => {
     return gulp.src(webpackConfig.entry)
@@ -61,6 +62,12 @@ gulp.task('watch', () => {
     gulp.watch([src + 'app/**/*.js', src + 'app/**/*.hbs'], ['scripts']);
 });
 
+gulp.task('lint', () => {
+    return gulp.src([src + 'app/**/*.js', tests + '**/*.js'])
+    .pipe($.jshint())
+    .pipe($.jshint.reporter('default'));
+});
+
 gulp.task('clean', (cb) => {
     del([dist], cb);
 });
@@ -68,5 +75,5 @@ gulp.task('clean', (cb) => {
 gulp.task('default', ['build', 'serve', 'watch']);
 
 gulp.task('build', ['clean'], () => {
-    gulp.start(['static', 'html','scripts','styles']);
+    gulp.start(['lint', 'static', 'html','scripts','styles']);
 });
