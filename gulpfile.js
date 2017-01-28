@@ -48,7 +48,7 @@ gulp.task('serve', () => {
         livereload: {
             port: 35728
         },
-        middleware: function(connect, opt) {
+        middleware: (connect, opt) => {
             return [ history() ]
         }
     })
