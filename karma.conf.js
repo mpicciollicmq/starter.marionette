@@ -5,15 +5,17 @@ module.exports = function(config) {
         
         basePath: '',
         
-        frameworks: ['mocha'],
+        frameworks: ['mocha', 'fixture'],
         
         files: [
-            'tests/**/*test.js'
+            'tests/**/*test.js',
+            'src/**/*.html'
         ],
         
         preprocessors: {
-            'tests/*'   : ['webpack'],
-            'tests/**/*': ['webpack']
+            'tests/*'      : ['webpack'],
+            'tests/**/*'   : ['webpack'],
+            'src/**/*.html': ['html2js']
         },
         
         webpack: {
@@ -54,7 +56,9 @@ module.exports = function(config) {
             require('karma-webpack'),
             require('karma-mocha'),
             require('karma-spec-reporter'),
-            require('karma-phantomjs-launcher')
+            require('karma-phantomjs-launcher'),
+            require('karma-fixture'),
+            require('karma-html2js-preprocessor')
         ]
         
     });
