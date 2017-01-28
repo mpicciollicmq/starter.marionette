@@ -34,7 +34,7 @@ gulp.task('html', () => {
 })
 
 gulp.task('styles', () => {
-    return gulp.src(src + 'styles/*.scss')
+    return gulp.src(src + 'styles/main.scss')
     .pipe($.sass({ outputStyle: isProduction ? 'compressed' : 'expanded' }))
     .pipe(gulp.dest(dist + 'css/'))
     .pipe($.connect.reload())
