@@ -1,8 +1,9 @@
 const gulp = require('gulp')
 const path = require('path')
 const del = require('del')
+const history = require('connect-history-api-fallback')
 const $ = require('gulp-load-plugins')({
-    pattern: ['*', '!jshint']
+    pattern: ['*', '!jshint', '!connect-history-api-fallback']
 })
 
 const environment = $.util.env.type || 'development'
@@ -46,6 +47,9 @@ gulp.task('serve', () => {
         port: port,
         livereload: {
             port: 35728
+        },
+        middleware: function(connect, opt) {
+            return [ history() ]
         }
     })
 })

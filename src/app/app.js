@@ -11,7 +11,7 @@ export default Mn.Application.extend({
         const rootView = new RootView()
         this.showView(rootView)
         this.Router = new Router({controller: rootView})
-        Bn.history.start()
+        Bn.history.start({pushState: true})
     }
     
 })
