@@ -34,7 +34,7 @@ Unit and integration tests are powered by [Karma](http://karma-runner.github.io/
 $ gulp test
 ```
 
-Detect errors and potential problems in code with JSHint:
+Detect errors and potential problems in code with [JSHint](http://jshint.com/):
 
 ```shell
 $ gulp lint
