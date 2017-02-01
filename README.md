@@ -31,7 +31,13 @@ $ gulp build --type production
 Unit and integration tests are powered by [Karma](http://karma-runner.github.io/0.12/index.html), [Mocha](http://mochajs.org/) and [Chai](http://chaijs.com/):
 
 ```shell
-$ npm test
+$ gulp test
+```
+
+Detect errors and potential problems in code with JSHint:
+
+```shell
+$ gulp lint
 ```
 
 ### Components
