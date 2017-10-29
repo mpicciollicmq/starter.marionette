@@ -13,9 +13,7 @@ export default Mn.View.extend({
     },
     
     serializeData() {
-        return {
-            posts: this.collection.models
-        }
+        return { posts: this.collection.models }
     }
     
 })
