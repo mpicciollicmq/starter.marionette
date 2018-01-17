@@ -15,29 +15,35 @@ uglifyJsPlugin = new webpack.optimize.UglifyJsPlugin({
 });
 
 module.exports.development = {
-    debug : true,
     devtool : 'eval',
     entry: entry,
     output: output,
     module : {
-        loaders : [
-            { test: /\.js?$/, exclude: /node_modules/, loader: 'babel-loader' },
-            { test: /\.hbs$/, loader: 'handlebars-loader' }
-        ]
-    }
-};
-
-module.exports.production = {
-    debug: false,
-    entry: entry,
-    output: output,
-    module : {
-        loaders : [
-            { test: /\.js?$/, exclude: /node_modules/, loader: 'babel-loader' },
-            { test: /\.hbs$/, loader: 'handlebars-loader' }
+        rules : [
+            { test: /\.js?$/, exclude: /node_modules/, use: ['babel-loader'] },
+            { test: /\.hbs$/, use: ['handlebars-loader'] }
         ]
     },
     plugins: [
-        uglifyJsPlugin
+        new webpack.LoaderOptionsPlugin({
+            debug: true
+        })
+    ]
+};
+
+module.exports.production = {
+    entry: entry,
+    output: output,
+    module : {
+        rules : [
+            { test: /\.js?$/, exclude: /node_modules/, use: ['babel-loader'] },
+            { test: /\.hbs$/, use: ['handlebars-loader'] }
+        ]
+    },
+    plugins: [
+        uglifyJsPlugin,
+        new webpack.LoaderOptionsPlugin({
+            debug: true
+        })
     ]
 };
